@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import ExcelUpload from '../../components/general/ExcelUpload';
 import Manual from '../../components/general/Manual';
 import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
+import Icon, {
+  AntDesign,
+} from 'react-web-vector-icons';
 
 import '../../scss/dashboard.scss';
 
