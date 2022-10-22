@@ -19,11 +19,9 @@ const customDot = (dot, { status, index }) => (
 
 export default function GameLibraryPage() {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [modalStep, setModalStep] = useState(1);
-  const [verifiedCode, setVerifiedCode] = useState('00000');
-
   const onSearch = (value) => console.log(value);
+  const [modalStep, setModalStep] = useState(0);
+  const [verifiedCode, setVerifiedCode] = useState('00000');
   const StyledReactInputVerificationCode = styled.div`
        display: flex;
        justify-content: center;
@@ -155,6 +153,8 @@ export default function GameLibraryPage() {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const showModal = () => {
       setOpen(true);
   };

@@ -4,7 +4,6 @@ import { Typography } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { RiAccountBoxLine } from "react-icons/ri";
 
 const { Text, Link } = Typography;
 
@@ -51,7 +50,7 @@ const MenuComponent = forwardRef(({ open, setOpen }, ref) => {
     getItem(
       <Link onClick={() => {setMenuKey(5); navigate("/player/administrator")}}><Text style={{color: "#6A67CE", fontSize: "17px", fontWeight: "600"}}>Administradores</Text></Link>,
       '5',
-      <RiAccountBoxLine style={{fontSize: "26px", color: "#6A67CE"}} />
+      <img src='/img/icon/member.png' style={{width: "24px"}}/>,
     ),
     getItem(
       <Link onClick={() => {setMenuKey(6); navigate("/competition")}}><Text style={{color: "#6A67CE", fontSize: "17px", fontWeight: "600"}}>Live Streaming</Text></Link>,
@@ -93,7 +92,7 @@ const MenuComponent = forwardRef(({ open, setOpen }, ref) => {
     getItem(
       <Link onClick={() => {setMenuKey(5); navigate("/player/administrator")}}></Link>,
       '5',
-      <RiAccountBoxLine style={{fontSize: "26px", color: "#6A67CE"}} />
+      <img src='/img/icon/member.png' style={{width: "24px"}}/>,
     ),
     getItem(
       <Link onClick={() => {setMenuKey(6); navigate("/competition")}}></Link>,

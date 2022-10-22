@@ -93,7 +93,7 @@ const MenuComponent = forwardRef(({ open, setOpen }, ref) => {
     getItem(
       <Link onClick={() => {setMenuKey(5); navigate("/player/administrator")}}></Link>,
       '5',
-      <RiAccountBoxLine style={{fontSize: "26px", color: "#6A67CE"}} />
+      <RiAccountBoxLine style={{fontSize: "24px", color: "#6A67CE"}} />
     ),
     getItem(
       <Link onClick={() => {setMenuKey(6); navigate("/competition")}}></Link>,
