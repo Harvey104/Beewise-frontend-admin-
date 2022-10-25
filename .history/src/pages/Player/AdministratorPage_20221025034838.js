@@ -2,8 +2,6 @@ import { Button, Modal, Input, Typography, Collapse, Table, Progress, Col, Row }
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DownloadOutlined } from '@ant-design/icons';
-import InfoModal from "../../components/player/InfoModal";
-import CodeModal from "../../components/player/CodeModal";
 
 import '../../scss/dashboard.scss';
 
@@ -11,7 +9,7 @@ const { Text, Title, Link } = Typography;
 const { Search } = Input;
 const { Panel } = Collapse;
 
-export default function PlayerPage() {
+export default function AdministratorPage() {
   const navigate = useNavigate();
   const [modalTab, setModalTab] = useState(1);
   const onSearch = (value) => console.log(value);
@@ -26,43 +24,11 @@ export default function PlayerPage() {
     }),
   };
 
-  const [open, setOpen] = useState(false);
-  const showModal = () => {
-      setOpen(true);
-  };
-  const handleOk = (e) => {
-      console.log(e);
-      setOpen(false);
-  };
-  
-  const handleCancel = (e) => {
-      console.log(e);
-      setOpen(false);
-  };
-
   const competationColumn = [
     {
-      title: 'Nombre',
-      dataIndex: 'name',
-      key: 'name',
-      sorter: {
-        compare: (a, b) => a.correct - b.correct,
-        multiple: 3,
-      }
-    },
-    {
-      title: 'Apellido',
-      dataIndex: 'surname',
-      key: 'surname',
-      sorter: {
-        compare: (a, b) => a.correct - b.correct,
-        multiple: 3,
-      }
-    },
-    {
-      title: 'Rut',
-      dataIndex: 'rut',
-      key: 'rut',
+      title: 'Usuario',
+      dataIndex: 'user',
+      key: 'user',
       sorter: {
         compare: (a, b) => a.correct - b.correct,
         multiple: 3,
@@ -78,18 +44,18 @@ export default function PlayerPage() {
       }
     },
     {
-      title: 'Departamento',
-      dataIndex: 'department',
-      key: 'department',
+      title: 'Código',
+      dataIndex: 'code',
+      key: 'code',
       sorter: {
         compare: (a, b) => a.correct - b.correct,
         multiple: 3,
       }
     },
     {
-      title: 'Estado',
-      dataIndex: 'state',
-      key: 'state',
+      title: 'Tipo de usuario',
+      dataIndex: 'type',
+      key: 'type',
       sorter: {
         compare: (a, b) => a.correct - b.correct,
         multiple: 3,
@@ -103,7 +69,7 @@ export default function PlayerPage() {
         <div className='v-around h-center'>
           <img src='/img/icon/edit.png'/>
           <img src='/img/icon/branch.png' width={20} height={20}/>
-          <img src='/img/icon/user-lock.png' width={20} height={20}/>
+          <img src='/img/icon/resume.png' width={20} height={20}/>
         </div>
       )
     },
@@ -111,55 +77,74 @@ export default function PlayerPage() {
   const competationData = [
     {
         key: '1',
-        name: 'Javiera',
-        surname: 'Carreño',
-        rut: '11.111.111-k',
+        user: 'Javiera Carreño',
         email: 'jcarreno@clc.cl',
-        department: 'Operaciones',
-        state: 'Activo',
+        code: 'J4o12',
+        type: 'Administrador',
         action: '',
     },
     {
         key: '2',
-        name: 'César',
-        surname: 'Bolaños',
-        rut: '11.111.111-k',
+        user: 'César Bolaños',
         email: 'cbolanos@clc.cl',
-        department: 'RR.HH',
-        state: 'Activo',
+        code: 'KLm01',
+        type: 'Administrador',
         action: '',
     },
     {
         key: '3',
-        name: 'César',
-        surname: 'Bolaños',
-        rut: '11.111.111-k',
-        email: 'cbolanos@clc.cl',
-        department: 'RR.HH',
-        state: 'Activo',
+        user: 'María Jesús Olivares',
+        email: 'majeolivares@clc.cl',
+        code: 'aSw54',
+        type: 'Administrador',
         action: '',
     },
     {
-      key: '4',
-      name: 'María',
-      surname: 'Olivares',
-      rut: '11.111.111-k',
-      email: 'majeolivares@clc.cl',
-      department: 'Operaciones',
-      state: 'Inactivo',
-      action: '',
+        key: '4',
+        user: 'Pablo Martinez',
+        email: 'pmartinez@clc.cl',
+        code: '16tG0',
+        type: 'Administrador',
+        action: '',
     },
     {
-      key: '5',
-      name: 'Claudia',
-      surname: 'Varas',
-      rut: '11.111.111-k',
-      email: 'cvarasv@clc.cl',
-      department: 'RR. HH',
-      state: 'Bloqueado',
-      action: '',
+        key: '5',
+        user: 'Claudia Varas',
+        email: 'cvarasv@clc.cl',
+        code: '77ieH',
+        type: 'Super Administrador',
+        action: '',
     },
   ];
+  
+
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+      setOpen(true);
+  };
+  const handleOk = (e) => {
+      console.log(e);
+      setOpen(false);
+  };
+  
+  const handleCancel = (e) => {
+      console.log(e);
+      setOpen(false);
+  };
+  
+  const [open1, setOpen1] = useState(false);
+  const showModal1 = () => {
+      setOpen1(true);
+  };
+  const handleOk1 = (e) => {
+      console.log(e);
+      setOpen1(false);
+  };
+  
+  const handleCancel1 = (e) => {
+      console.log(e);
+      setOpen1(false);
+  };
   
   return (
     <div className='dashboard'>
@@ -169,13 +154,13 @@ export default function PlayerPage() {
                 <Text className='smail-title'>23 de Marzo, 2022</Text>
             </div>
             <div className='v-between  w-100'>
-                <Text className='bit-title'>En esta sección podras agregar jugadores, ya sea de forma manual o con ayuda de nuestra plantilla disponible.</Text>
+                <Text className='bit-title'>Aquí podras añadir y administrar los perfiles de los administradores que agregues.</Text>
                 <Text className='bit-title'>09:00 AM</Text>
             </div>
         </div>
         <div className='panel borderL mt-medium b-shadow'>
             <div className='v-between'>
-                <Title className='large-title no-margin bold'>Jugadores (5)</Title>
+                <Title className='large-title no-margin bold'>Administradores</Title>
                 <div className='v-end h-center'>
                   <Search
                       placeholder="Buscar usuario"
@@ -186,13 +171,10 @@ export default function PlayerPage() {
                       }}
                   />
                     <Button className={`bit-button hs ml-bit`} type="primary">
-                      Descargar Plantilla
+                      Eliminar
                     </Button>
                     <Button className={`bit-button hs ml-bit`} type="primary">
-                      Importar Plantilla
-                    </Button>
-                    <Button className={`bit-button hs ml-bit`} type="primary" onClick={() => showModal()}>
-                      Agregar jugadores
+                      Nuevo Administrador
                     </Button>
                 </div>
             </div>
@@ -207,17 +189,9 @@ export default function PlayerPage() {
                 }}
               />
             </div>
-            <div className='v-center mt-large'>
-                <Button className={`bit-button hs ml-bit`} type="primary">
-                  Descargar Informe
-                </Button>
-                <Button className={`bit-button hs ml-bit`} type="primary">
-                  Eliminar
-                </Button>
-            </div>
         </div>
         <Modal
-            title='Añadir nuevo cliente'
+            title='Añadir nuevo super administrador'
             open={open}
             onOk={handleOk}
             onCancel={handleCancel}
@@ -231,7 +205,7 @@ export default function PlayerPage() {
         >
             <div className='modal-content flex-column v-between h-center' style={{border: "none", height: "100%"}}>
                 <div className='w-100'>
-                  {modalTab == 1 ? <InfoModal/> : <CodeModal/>}
+                  {modalTab == 1 ? <InfoModal type="admin"/> : <CodeModal type="admin"/>}
                 </div>
                 {modalTab == 1 ? 
                   <div className='w-100 v-center mt-large'>
@@ -240,9 +214,28 @@ export default function PlayerPage() {
                   </div>
                   : 
                   <div className='w-100 v-center mt-large'>
-                    <Button className='bit-button hs' onClick={() => {setModalTab(1); handleCancel();}} type="primary">Finalizar</Button>
+                    <Button className='bit-button hs' onClick={() => {setModalTab(1); handleCancel();}} type="primary">Agregar Super Administrador</Button>
                   </div>
                 }
+            </div>
+        </Modal>
+        
+        <Modal
+            title=''
+            open={open1}
+            onOk={handleOk1}
+            onCancel={handleCancel1}
+            footer=''
+        >
+            <div className='modal-content' style={{border: "none"}}>
+                <img src='/img/icon/warning.png' width="91"/>
+                <h3>Pausar Cliente</h3>
+                <Text className='medium-title text-center'>¿Estas seguro de que quieres  pausar la actividad de Pedro Ulgade?</Text>
+                <p>Esto significa que CPedro Ugalde no podra ingresar nuevamente al sitio web impidiendo sus actividades</p>
+                <div>
+                  <Button className='bit-button hs' type="primary">Volver</Button>
+                  <Button className='bit-button hs ml-medium' onClick={() => handleCancel1()} type="primary">Pausar</Button>
+                </div>
             </div>
         </Modal>
     </div>

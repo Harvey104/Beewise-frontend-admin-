@@ -2,8 +2,6 @@ import { Button, Modal, Input, Typography, Collapse, Table, Progress, Col, Row }
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DownloadOutlined } from '@ant-design/icons';
-import InfoModal from "../../components/player/InfoModal";
-import CodeModal from "../../components/player/CodeModal";
 
 import '../../scss/dashboard.scss';
 
@@ -13,7 +11,6 @@ const { Panel } = Collapse;
 
 export default function PlayerPage() {
   const navigate = useNavigate();
-  const [modalTab, setModalTab] = useState(1);
   const onSearch = (value) => console.log(value);
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -191,7 +188,7 @@ export default function PlayerPage() {
                     <Button className={`bit-button hs ml-bit`} type="primary">
                       Importar Plantilla
                     </Button>
-                    <Button className={`bit-button hs ml-bit`} type="primary" onClick={() => showModal()}>
+                    <Button className={`bit-button hs ml-bit`} type="primary">
                       Agregar jugadores
                     </Button>
                 </div>

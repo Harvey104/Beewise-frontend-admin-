@@ -1,9 +1,7 @@
-import { Button, Modal, Input, Typography, Collapse, Table, Progress, Col, Row } from 'antd';
+import { Button, Form, Input, Typography, Collapse, Table, Progress, Col, Row } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DownloadOutlined } from '@ant-design/icons';
-import InfoModal from "../../components/player/InfoModal";
-import CodeModal from "../../components/player/CodeModal";
 
 import '../../scss/dashboard.scss';
 
@@ -13,7 +11,6 @@ const { Panel } = Collapse;
 
 export default function PlayerPage() {
   const navigate = useNavigate();
-  const [modalTab, setModalTab] = useState(1);
   const onSearch = (value) => console.log(value);
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -24,20 +21,6 @@ export default function PlayerPage() {
       // Column configuration not to be checked
       name: record.name,
     }),
-  };
-
-  const [open, setOpen] = useState(false);
-  const showModal = () => {
-      setOpen(true);
-  };
-  const handleOk = (e) => {
-      console.log(e);
-      setOpen(false);
-  };
-  
-  const handleCancel = (e) => {
-      console.log(e);
-      setOpen(false);
   };
 
   const competationColumn = [
@@ -191,7 +174,7 @@ export default function PlayerPage() {
                     <Button className={`bit-button hs ml-bit`} type="primary">
                       Importar Plantilla
                     </Button>
-                    <Button className={`bit-button hs ml-bit`} type="primary" onClick={() => showModal()}>
+                    <Button className={`bit-button hs ml-bit`} type="primary">
                       Agregar jugadores
                     </Button>
                 </div>
@@ -216,35 +199,6 @@ export default function PlayerPage() {
                 </Button>
             </div>
         </div>
-        <Modal
-            title='Añadir nuevo cliente'
-            open={open}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            width="70%"
-            // height="60%"
-            style={{
-              paddingBottom: "0px",
-            }}
-            footer=''
-            className='business-modal'
-        >
-            <div className='modal-content flex-column v-between h-center' style={{border: "none", height: "100%"}}>
-                <div className='w-100'>
-                  {modalTab == 1 ? <InfoModal/> : <CodeModal/>}
-                </div>
-                {modalTab == 1 ? 
-                  <div className='w-100 v-center mt-large'>
-                    <Button className='bit-button hs' onClick={() => handleCancel()} type="primary">Volver</Button>
-                    <Button className='bit-button hs ml-medium' onClick={() => setModalTab(2)} type="primary">Agregar</Button>
-                  </div>
-                  : 
-                  <div className='w-100 v-center mt-large'>
-                    <Button className='bit-button hs' onClick={() => {setModalTab(1); handleCancel();}} type="primary">Finalizar</Button>
-                  </div>
-                }
-            </div>
-        </Modal>
     </div>
   );
 }

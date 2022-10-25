@@ -1,10 +1,7 @@
-import { Button, Modal, Input, Typography, Collapse, Table, Progress, Col, Row } from 'antd';
+import { Button, Form, Input, Typography, Collapse, Table, Progress, Col, Row } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DownloadOutlined } from '@ant-design/icons';
-
-import InfoModal from "../../components/player/InfoModal";
-import CodeModal from "../../components/player/CodeModal";
 
 import '../../scss/dashboard.scss';
 
@@ -14,7 +11,6 @@ const { Panel } = Collapse;
 
 export default function AdministratorPage() {
   const navigate = useNavigate();
-  const [modalTab, setModalTab] = useState(1);
   const onSearch = (value) => console.log(value);
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -120,35 +116,6 @@ export default function AdministratorPage() {
     },
   ];
   
-
-  const [open, setOpen] = useState(false);
-  const showModal = () => {
-      setOpen(true);
-  };
-  const handleOk = (e) => {
-      console.log(e);
-      setOpen(false);
-  };
-  
-  const handleCancel = (e) => {
-      console.log(e);
-      setOpen(false);
-  };
-  
-  const [open1, setOpen1] = useState(false);
-  const showModal1 = () => {
-      setOpen1(true);
-  };
-  const handleOk1 = (e) => {
-      console.log(e);
-      setOpen1(false);
-  };
-  
-  const handleCancel1 = (e) => {
-      console.log(e);
-      setOpen1(false);
-  };
-  
   return (
     <div className='dashboard'>
         <div className='panel borderL flex-column h-center gap-bit b-shadow'>
@@ -176,7 +143,7 @@ export default function AdministratorPage() {
                     <Button className={`bit-button hs ml-bit`} type="primary">
                       Eliminar
                     </Button>
-                    <Button className={`bit-button hs ml-bit`} type="primary" onClick={() => showModal()}>
+                    <Button className={`bit-button hs ml-bit`} type="primary">
                       Nuevo Administrador
                     </Button>
                 </div>
@@ -193,54 +160,6 @@ export default function AdministratorPage() {
               />
             </div>
         </div>
-        <Modal
-            title='Añadir nuevo super administrador'
-            open={open}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            width="70%"
-            // height="60%"
-            style={{
-              paddingBottom: "0px",
-            }}
-            footer=''
-            className='business-modal'
-        >
-            <div className='modal-content flex-column v-between h-center' style={{border: "none", height: "100%"}}>
-                <div className='w-100'>
-                  {modalTab == 1 ? <InfoModal type="admin"/> : <CodeModal type="admin"/>}
-                </div>
-                {modalTab == 1 ? 
-                  <div className='w-100 v-center mt-large'>
-                    <Button className='bit-button hs' onClick={() => handleCancel()} type="primary">Volver</Button>
-                    <Button className='bit-button hs ml-medium' onClick={() => setModalTab(2)} type="primary">Agregar</Button>
-                  </div>
-                  : 
-                  <div className='w-100 v-center mt-large'>
-                    <Button className='bit-button hs' onClick={() => {setModalTab(1); handleCancel();}} type="primary">Agregar Super Administrador</Button>
-                  </div>
-                }
-            </div>
-        </Modal>
-        
-        <Modal
-            title=''
-            open={open1}
-            onOk={handleOk1}
-            onCancel={handleCancel1}
-            footer=''
-        >
-            <div className='modal-content' style={{border: "none"}}>
-                <img src='/img/icon/warning.png' width="91"/>
-                <h3>Pausar Cliente</h3>
-                <Text className='medium-title text-center'>¿Estas seguro de que quieres  pausar la actividad de Pedro Ulgade?</Text>
-                <p>Esto significa que CPedro Ugalde no podra ingresar nuevamente al sitio web impidiendo sus actividades</p>
-                <div>
-                  <Button className='bit-button hs' type="primary">Volver</Button>
-                  <Button className='bit-button hs ml-medium' onClick={() => handleCancel1()} type="primary">Pausar</Button>
-                </div>
-            </div>
-        </Modal>
     </div>
   );
 }

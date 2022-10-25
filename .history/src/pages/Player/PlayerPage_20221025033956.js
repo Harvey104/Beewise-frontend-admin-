@@ -191,7 +191,7 @@ export default function PlayerPage() {
                     <Button className={`bit-button hs ml-bit`} type="primary">
                       Importar Plantilla
                     </Button>
-                    <Button className={`bit-button hs ml-bit`} type="primary" onClick={() => showModal()}>
+                    <Button className={`bit-button hs ml-bit`} type="primary">
                       Agregar jugadores
                     </Button>
                 </div>
