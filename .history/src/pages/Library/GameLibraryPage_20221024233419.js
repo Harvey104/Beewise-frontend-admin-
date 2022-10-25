@@ -137,7 +137,7 @@ export default function GameLibraryPage() {
   ];
 
   const showModal = () => {
-      setModalStep(GAME_MODAL_STEP.VERIFY);
+      set
       setOpen(true);
   };
   const handleOk = (e) => {

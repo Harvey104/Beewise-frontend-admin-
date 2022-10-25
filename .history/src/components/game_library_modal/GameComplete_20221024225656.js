@@ -15,6 +15,7 @@ const { Text, Link } = Typography;
 
 const GameCompleteComponent = (props) => {
   const next = props.next;
+  const previous = props.previous;
   const [code, setCode] = useState('http://beewise.com/games/123456');
   const listData = [
     {
@@ -39,7 +40,7 @@ const GameCompleteComponent = (props) => {
     },
   ];
   return (
-    <div className="flex-column v-between h-center" style={{width: "90%", height: "100%"}}>
+    <div className="flex-column v-between h-center" style={{width: "90%"}}>
       <div style={{width: "100%"}}>
         <Text className="large-title">Resumen Competencia</Text><br/>
         <Text className="medium-title mt-bit">Aqui puedes visualizar los datos generales del juego</Text>
@@ -66,24 +67,22 @@ const GameCompleteComponent = (props) => {
               )}
             />
           </Col>
-          <Col span={12} className="flex v-end">
+          <Col span={12} style={{display: "flex"}}>
             <div className="padding-medium flex-column v-between h-center"
               style={{
                 boxShadow: "0px 3px 22px 10px rgba(0, 0, 0, 0.08)",
                 borderRadius: "15px",
-                width: "80%"
               }}
             >
               <QRCode value={code} />
-              <Text className="medium-title mt-small center pv-small">Escanea el código para acceder a la competencia</Text>
-              <Input placeholder="" className='hm mt-small' value={code} onChange={e => setCode(e.target.value)} style={{width: "90%"}}/>
-              <Text className="medium-title mt-small center pv-small">O puedes compartir este link con tus  jugadores</Text>
+              <Text className="medium-title mt-small">Escanea el código para acceder a la competencia</Text>
+              <Input placeholder="" className='hm mt-small' style={{width: "100%"}}/>
             </div>
           </Col>
         </Row>
       </div>
-      <div className="w-100 v-center">
-        <Button className="small-button hm" onClick={() => next(GAME_MODAL_STEP.CREATE_SUCCESS)}>Añadir seleccionados</Button>
+      <div>
+
       </div>
     </div>
   );

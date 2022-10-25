@@ -137,7 +137,6 @@ export default function GameLibraryPage() {
   ];
 
   const showModal = () => {
-      setModalStep(GAME_MODAL_STEP.VERIFY);
       setOpen(true);
   };
   const handleOk = (e) => {
@@ -502,7 +501,7 @@ export default function GameLibraryPage() {
             >
                 <div className='w-100'>
                   { 
-                    modalStep !== GAME_MODAL_STEP.GAME_COMPLETE && modalStep !== GAME_MODAL_STEP.CREATE_SUCCESS ? (
+                    modalStep !== GAME_MODAL_STEP.GAME_COMPLETE  ? (
                       <>
                         <div className='' style={{width: "40%"}}>
                           <Steps current={
@@ -529,7 +528,8 @@ export default function GameLibraryPage() {
                           }
                         </Text>
                         {
-                          modalStep === GAME_MODAL_STEP.CHOOSE_DATE ? (<><br/><Text className='medium-title color-black' style={{marginLeft: "66px", fontSize: "18px"}}>Jugadores: 20 / Equipos 4</Text></>) : ''
+                          
+                            modalStep === GAME_MODAL_STEP.CHOOSE_DATE ? (<><br/><Text className='medium-title color-black' style={{marginLeft: "66px", fontSize: "18px"}}>Jugadores: 20 / Equipos 4</Text></>) : ''
                         }
                       </>
                     ) : ""
@@ -542,7 +542,7 @@ export default function GameLibraryPage() {
                   modalStep === GAME_MODAL_STEP.AUTO_SET_TEAM ? <AutoSetTeam next={setModalStep}/> : 
                   modalStep === GAME_MODAL_STEP.CHOOSE_DATE ? <ChooseDate next={setModalStep}/> : 
                   modalStep === GAME_MODAL_STEP.GAME_COMPLETE ? <GameComplete next={setModalStep}/> : 
-                  modalStep === GAME_MODAL_STEP.CREATE_SUCCESS ? <Success next={handleCancel}/> : 
+                  modalStep === GAME_MODAL_STEP.Success ? <GameComplete next={setModalStep}/> : 
                   modalStep === GAME_MODAL_STEP.SET_TEAM ? <SetTeam next={setModalStep}/> : ''
                 }
             </div>

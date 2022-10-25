@@ -6,7 +6,7 @@ export const GAME_MODAL_STEP = {
     SET_TEAM: 5,
     CHOOSE_DATE: 6,
     GAME_COMPLETE: 7,
-    CREATE_SUCCESS: 8,
+    GAME_COMPLETE: 7,
 }
 
 export const DEPARTMENT = [

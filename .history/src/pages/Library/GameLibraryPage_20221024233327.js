@@ -137,7 +137,6 @@ export default function GameLibraryPage() {
   ];
 
   const showModal = () => {
-      setModalStep(GAME_MODAL_STEP.VERIFY);
       setOpen(true);
   };
   const handleOk = (e) => {
@@ -529,7 +528,7 @@ export default function GameLibraryPage() {
                           }
                         </Text>
                         {
-                          modalStep === GAME_MODAL_STEP.CHOOSE_DATE ? (<><br/><Text className='medium-title color-black' style={{marginLeft: "66px", fontSize: "18px"}}>Jugadores: 20 / Equipos 4</Text></>) : ''
+                            modalStep === GAME_MODAL_STEP.CHOOSE_DATE ? (<><br/><Text className='medium-title color-black' style={{marginLeft: "66px", fontSize: "18px"}}>Jugadores: 20 / Equipos 4</Text></>) : ''
                         }
                       </>
                     ) : ""

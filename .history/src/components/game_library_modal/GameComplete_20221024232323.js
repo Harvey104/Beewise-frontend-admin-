@@ -15,6 +15,7 @@ const { Text, Link } = Typography;
 
 const GameCompleteComponent = (props) => {
   const next = props.next;
+  const previous = props.previous;
   const [code, setCode] = useState('http://beewise.com/games/123456');
   const listData = [
     {

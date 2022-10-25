@@ -15,6 +15,7 @@ const { Text, Link } = Typography;
 
 const GameCompleteComponent = (props) => {
   const next = props.next;
+  const previous = props.previous;
   const [code, setCode] = useState('http://beewise.com/games/123456');
   const listData = [
     {
@@ -39,7 +40,7 @@ const GameCompleteComponent = (props) => {
     },
   ];
   return (
-    <div className="flex-column v-between h-center" style={{width: "90%", height: "100%"}}>
+    <div className="flex-column v-between h-center" style={{width: "90%", height: "100%", zIndex: "-1", }}>
       <div style={{width: "100%"}}>
         <Text className="large-title">Resumen Competencia</Text><br/>
         <Text className="medium-title mt-bit">Aqui puedes visualizar los datos generales del juego</Text>
@@ -83,7 +84,7 @@ const GameCompleteComponent = (props) => {
         </Row>
       </div>
       <div className="w-100 v-center">
-        <Button className="small-button hm" onClick={() => next(GAME_MODAL_STEP.CREATE_SUCCESS)}>Añadir seleccionados</Button>
+        <Button className="small-button hm" onClick={() => next(GAME_MODAL_STEP.CHOOSE_TEAM)}>Añadir seleccionados</Button>
       </div>
     </div>
   );
