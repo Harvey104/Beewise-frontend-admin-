@@ -1,0 +1,33 @@
+import axios from 'axios';
+import {SERVER_URL} from '../../constant';
+
+export const excelDataUpload = (uploadData, callback, err) => {
+    var config = {
+        method: 'post',
+        // url: SERVER_URL + 'auth/quiz_post',
+        url: SERVER_URL + 'auth/signup',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        // data : uploadData,
+        data: {
+            "invit_code": "22222",
+            "email": "johnl@gmail.com",
+            "password": "123456",
+            "role": [
+              "user",
+              "moderator"
+            ]
+        }
+    };
+    
+    axios(config)
+    .then(function (res) {
+        console.log(res);
+        res.message === 'success' ? callback() : err();
+        callback();
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
