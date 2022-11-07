@@ -12,6 +12,7 @@ const { Text, Link } = Typography;
 
 const ExcelUploadComponent = (props) => {
     const setTab = props.setTab;
+    const setQuestionData = props.setQuestionData;
     const navigate = useNavigate();
     const [err, setErr] = useState('');
     const [percent, setProcess] = useState(0);
@@ -89,16 +90,17 @@ const ExcelUploadComponent = (props) => {
           } else {
             console.log(newRows);
             setProcess(80);
-            // setProcess(100);
+            setProcess(100);
+            setUploadState(1);
+            setQuestionData(newRows);
+            // excelDataUpload(newRows, () => {
+            //     setProcess(100);
             //     setUploadState(1);
-            excelDataUpload(newRows, () => {
-                setProcess(100);
-                setUploadState(1);
-              }, () => {
-                setProcess(0);
-                setErr("failure");
-              }
-            );
+            //   }, () => {
+            //     setProcess(0);
+            //     setErr("failure");
+            //   }
+            // );
           }
         }
       });

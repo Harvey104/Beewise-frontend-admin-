@@ -9,20 +9,18 @@ import {excelDataUpload} from '../actions/Questions';
 
 const { Text, Link } = Typography;
 
-const ManualComponent = () => {
+const ManualComponent = (props) => {
     const navigate = useNavigate();
+    const setQuestionData = props.setQuestionData;
+    const questionData = props.questionData;
     const [question, setQuestionTitle] = useState('');
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
     const [duration, setTime] = useState(0);
     const [firstAnswer, setFirstAnswer] = useState('');
-    const [firstAnswerAccuracy, setFirstAnswerAccuracy] = useState(1);
     const [secondAnswer, setSecondAnswer] = useState('');
-    const [secondAnswerAccuracy, setSecondAnswerAccuracy] = useState(0);
     const [thirdAnswer, setThirdAnswer] = useState('');
-    const [thirdAnswerAccuracy, setThirdAnswerAccuracy] = useState(0);
     const [fourthAnswer, setFourthAnswer] = useState('');
-    const [fourthAnswerAccuracy, setFourthAnswerAccuracy] = useState(0);
     const formLayout = 'vertical';
     const formItemLayout =
       formLayout === 'horizontal'
@@ -37,26 +35,23 @@ const ManualComponent = () => {
         : null;
 
   const createQuestion = () => {
-    excelDataUpload([{
-        question: question,
-        type: 1,
-        videoUrl: '',
-        category: category,
-        duration: duration,
-        firstAnswer: firstAnswer,
-        firstAnswerAccuracy: firstAnswerAccuracy,
-        secondAnswer: secondAnswer,
-        secondAnswerAccuracy: secondAnswerAccuracy,
-        thirdAnswer: thirdAnswer,
-        thirdAnswerAccuracy: thirdAnswerAccuracy,
-        fourthAnswer: fourthAnswer,
-        fourthAnswerAccuracy: fourthAnswerAccuracy,
-      }], () => {
-        console.log('success');
-      }, () => {
-        console.log('failure');
-      },
-    );
+    setQuestionData([
+      ...questionData,
+      {
+      question: question,
+      type: 1,
+      category: category,
+      duration: duration,
+      firstAnswer: firstAnswer,
+      firstAnswerAccuracy: 1,
+      secondAnswer: secondAnswer,
+      secondAnswerAccuracy: 0,
+      thirdAnswer: thirdAnswer,
+      thirdAnswerAccuracy: 0,
+      fourthAnswer: fourthAnswer,
+      fourthAnswerAccuracy: 0,
+    }]);
+    console.log(questionData, 'ddd');
   }
   return (
     <>
